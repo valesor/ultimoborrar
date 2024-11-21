@@ -1,0 +1,382 @@
+@charset "utf-8";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0; /* Fondo claro */
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+h3 {
+  text-align: center;
+}
+
+p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: left;
+}
+.title-third {
+  font-size: 2rem;
+}
+
+.principal-title {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.text {
+  text-align: center;
+  padding: 1rem 6rem 2rem 6rem;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-title {
+  /* background-color: #000000; */
+  margin-bottom: 2rem;
+}
+
+.web {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+
+  > header {
+    padding: 0.5rem 2rem;
+    text-align: center;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  > main {
+    padding: 2rem 3rem;
+    background: #ffffff;
+
+    .titulo {
+      margin-bottom: 1em;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+
+  > footer {
+    padding: 1rem;
+    background-color: #55e679;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+      list-style: none;
+    }
+  }
+}
+
+.span-productos,
+.span-total {
+  color: #2e15e9;
+  font-weight: bold;
+}
+button {
+  padding: 1rem 1rem;
+  border-radius: 63px;
+  margin: 0 2rem;
+  border: none;
+  font-weight: bold;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: filter 300ms ease-out;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(1.2);
+    background-color: #55e679;
+    color: #000000;
+  }
+}
+
+#mini-carrito {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid #aeaeae;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+}
+
+.text-item-agregado,
+.text-item-precio {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#productos {
+  display: grid;
+  grid-template-columns: 100%;
+  list-style: none;
+  gap: 1rem;
+
+  li {
+    border: 1px solid #aeaeae;
+
+    img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-color: #ffffff;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: whitesmoke;
+    }
+  }
+}
+
+.modal {
+  padding: 1rem;
+  width: 80%;
+  font-size: 1.2rem;
+  text-align: center;
+  max-width: 40rem;
+  max-height: 95dvh;
+  background-color: #ffffff; /* Fondo sólido */
+  animation: fade-slide-up 0.3s ease-out forwards;
+  border: none; /* Sin bordes */
+  box-shadow: rgb(191, 190, 190); /* Sin sombras */
+  border-radius: 23px;
+  margin: auto;
+  overflow: hidden; /* Oculta el contenido desbordado */
+  transform: translateZ(0); /* Acelera el renderizado en navegadores */
+  will-change: transform, opacity; /* Optimiza cambios visuales */
+
+  .detalle {
+    text-align: center;
+
+    img {
+      width: 100%;
+    }
+
+    img,
+    h3,
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .titulo-contenedor-carrito {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .carrito {
+    text-align: center;
+
+    > *:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    > ul {
+      padding: 1rem;
+      text-align: center;
+      list-style: none; /* Evita viñetas */
+      margin: 0; /* Elimina márgenes */
+
+      li {
+        border: none; /* Sin bordes entre los ítems */
+        margin: 0; /* Sin márgenes entre ítems */
+        padding: 0.5rem 0; /* Espaciado uniforme */
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.enlace-carrito {
+  color: rgb(238, 47, 47);
+  text-decoration: none;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo del backdrop */
+}
+
+@media (width >= 576px) {
+  .web {
+    > footer ul {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  #productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 768px) {
+  .web {
+    > footer ul {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  #productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+#productos li img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: #ffffff;
+  transition: transform 0.3s ease; /* Añade una transición suave */
+}
+
+#productos li img:hover {
+  transform: scale(1.03); /* Aumenta el tamaño de la imagen al pasar el mouse */
+}
+
+/* Carrito de compras */
+.responsive-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease; /* Agregamos una transición para un efecto más suave */
+}
+
+/* hago que la imagen sea responsive */
+.responsive-container img {
+  max-width: 100%;
+  height: auto;
+  width: 40px;
+}
+
+/* Estilo para el texto */
+.responsive-container span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Efecto visual cuando el usuario pasa el mouse */
+.responsive-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  .responsive-container span {
+    font-size: 1rem;
+  }
+
+  .responsive-container img {
+    width: 35px;
+  }
+  .principal-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animación de entrada */
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo de los botones */
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:focus {
+  outline: none;
+}
+
+.boton-cerrar {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.boton-cerrar:hover {
+  background-color: #e53935;
+}
+
+.boton-vaciar {
+  background-color: #ff9800;
+  color: #fff;
+}
+
+.boton-vaciar:hover {
+  background-color: #fb8c00;
+}
+
+.boton-pago {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.boton-pago:hover {
+  background-color: #388e3c;
+}
+
+/* Contenedor de los botones */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Estilos responsivos para los botones */
+@media (max-width: 600px) {
+  footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button {
+    width: 100%;
+    font-size: 18px;
+    padding: 15px;
+    margin: 5px 0; /* Reduce el margen para pantallas pequeñas */
+  }
+}
